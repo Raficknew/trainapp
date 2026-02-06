@@ -1,3 +1,3 @@
 export default function HomePage() {
-  return <div>Train app</div>;
+  return <div>Train App</div>;
 }
