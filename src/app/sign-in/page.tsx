@@ -1,9 +1,8 @@
 "use client";
-
-import { authClient } from "@/features/auth/auth-client";
+import { authClient } from "@/features/auth/client/auth-client";
 
 export default function SignInPage() {
-  const handleGoogleSignIn = async () => {
+  const signInWithGoogle = async () => {
     await authClient.signIn.social({
       provider: "google",
       callbackURL: "/",
@@ -13,7 +12,7 @@ export default function SignInPage() {
   return (
     <div>
       <h1>Sign In</h1>
-      <button type="submit" onClick={handleGoogleSignIn}>
+      <button type="submit" onClick={signInWithGoogle}>
         Sign in with Google
       </button>
     </div>
