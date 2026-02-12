@@ -20,10 +20,12 @@ export const TrainingTable = pgTable("training", {
   date: text("date").notNull(),
   status: trainingStatusEnum("status").default("scheduled").notNull(),
   durationTimeInMinutes: integer("duration_time_in_minutes").notNull(),
-  ownerId: uuid()
+  rpe: integer("rpe").notNull(),
+  feeling: integer("feeling").notNull(),
+  ownerId: text("owner_id")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
-  trainingPlanId: uuid()
+  trainingPlanId: uuid("training_plan_id")
     .references(() => TrainingPlanTable.id, { onDelete: "cascade" })
     .notNull(),
   updatedAt,
@@ -42,7 +44,7 @@ export const TrainingRelationships = relations(
       references: [DisciplineTable.discipline],
     }),
     trainingPlan: one(TrainingPlanTable, {
-      fields: [TrainingTable.id],
+      fields: [TrainingTable.trainingPlanId],
       references: [TrainingPlanTable.id],
     }),
     notes: many(NotesTable),

@@ -7,10 +7,10 @@ import { relations } from "drizzle-orm";
 export const NotesTable = pgTable("notes", {
   id,
   content: text("content").notNull(),
-  ownerId: uuid()
+  ownerId: text("owner_id")
     .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
-  trainingId: uuid()
+  trainingId: uuid("training_id")
     .references(() => TrainingTable.id, { onDelete: "cascade" })
     .notNull(),
   createdAt,

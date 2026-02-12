@@ -1,5 +1,19 @@
 import { relations } from "drizzle-orm";
-import { pgTable, text, timestamp, boolean, index } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  boolean,
+  index,
+  pgEnum,
+  uuid,
+} from "drizzle-orm/pg-core";
+import { CoachTable } from "./coach";
+import { TrainingPlanTable } from "./trainingPlan";
+
+export const userRoles = ["athlete", "coach"] as const;
+export type UserRole = (typeof userRoles)[number];
+export const userRoleEnum = pgEnum("user_role", userRoles);
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -7,6 +21,10 @@ export const user = pgTable("user", {
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
+  role: userRoleEnum("role").default("athlete").notNull(),
+  coachId: uuid("coach_id").references(() => CoachTable.id, {
+    onDelete: "set null",
+  }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
@@ -73,7 +91,12 @@ export const verification = pgTable(
   (table) => [index("verification_identifier_idx").on(table.identifier)],
 );
 
-export const userRelations = relations(user, ({ many }) => ({
+export const userRelations = relations(user, ({ one, many }) => ({
+  coach: one(CoachTable, {
+    fields: [user.coachId],
+    references: [CoachTable.id],
+  }),
+  trainingPlans: many(TrainingPlanTable),
   sessions: many(session),
   accounts: many(account),
 }));
