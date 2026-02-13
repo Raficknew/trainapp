@@ -1,5 +1,5 @@
 import { pgTable, text } from "drizzle-orm/pg-core";
 
 export const DisciplineTable = pgTable("discipline", {
-  discipline: text("discipline").primaryKey(),
+  discipline: text("discipline").unique().primaryKey(),
 });

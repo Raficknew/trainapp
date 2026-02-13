@@ -1,5 +1,5 @@
 {
-  "id": "226d6b5a-3cdc-43b3-ab68-892c4514a0d8",
+  "id": "41c140f1-f0b4-46c7-81f1-20d5b3ec867b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -447,7 +447,15 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "discipline_discipline_unique": {
+          "name": "discipline_discipline_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "discipline"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

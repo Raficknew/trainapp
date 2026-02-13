@@ -59,7 +59,8 @@ CREATE TABLE "coach" (
 );
 --> statement-breakpoint
 CREATE TABLE "discipline" (
-	"discipline" text PRIMARY KEY NOT NULL
+	"discipline" text PRIMARY KEY NOT NULL,
+	CONSTRAINT "discipline_discipline_unique" UNIQUE("discipline")
 );
 --> statement-breakpoint
 CREATE TABLE "exercise" (
