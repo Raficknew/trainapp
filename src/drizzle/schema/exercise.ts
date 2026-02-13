@@ -9,7 +9,7 @@ export const ExerciseTable = pgTable("exercise", {
   name: text("name").notNull(),
   image: text("image"),
   trainingId: uuid("training_id")
-    .references(() => TrainingTable.id)
+    .references(() => TrainingTable.id, { onDelete: "cascade" })
     .notNull(),
   createdAt,
   updatedAt,
