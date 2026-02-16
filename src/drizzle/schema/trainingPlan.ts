@@ -1,6 +1,6 @@
-import { user } from "../schema";
 import { relations } from "drizzle-orm";
 import { date, integer, pgTable, text } from "drizzle-orm/pg-core";
+import { user } from "../schema";
 import { createdAt, id, updatedAt } from "../schemaHelpers";
 import { TrainingTable } from "./training";
 

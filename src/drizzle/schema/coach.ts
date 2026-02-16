@@ -1,6 +1,6 @@
+import { relations } from "drizzle-orm";
 import { pgTable, text } from "drizzle-orm/pg-core";
 import { createdAt, id, updatedAt } from "../schemaHelpers";
-import { relations } from "drizzle-orm";
 import { user } from "./auth";
 
 export const CoachTable = pgTable("coach", {

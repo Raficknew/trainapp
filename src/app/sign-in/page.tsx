@@ -1,7 +1,9 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { authClient } from "@/features/auth/client/auth-client";
 
 export default function SignInPage() {
+  const t = useTranslations();
   const signInWithGoogle = async () => {
     await authClient.signIn.social({
       provider: "google",
@@ -11,9 +13,9 @@ export default function SignInPage() {
 
   return (
     <div>
-      <h1>Sign In</h1>
+      <h1>{t("SignInPage.title")}</h1>
       <button type="submit" onClick={signInWithGoogle}>
-        Sign in with Google
+        {t("SignInPage.signInWithGoogle")}
       </button>
     </div>
   );

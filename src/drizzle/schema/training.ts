@@ -1,3 +1,4 @@
+import { relations, sql } from "drizzle-orm";
 import {
   check,
   date,
@@ -8,12 +9,11 @@ import {
   timestamp,
   uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, id, updatedAt } from "../schemaHelpers";
-import { TrainingPlanTable } from "./trainingPlan";
-import { relations, sql } from "drizzle-orm";
 import { user } from "../schema";
-import { NotesTable } from "./notes";
+import { createdAt, id, updatedAt } from "../schemaHelpers";
 import { DisciplineTable } from "./discipline";
+import { NotesTable } from "./notes";
+import { TrainingPlanTable } from "./trainingPlan";
 
 export const trainingStatus = ["scheduled", "completed", "missed"] as const;
 export type TrainingStatus = (typeof trainingStatus)[number];

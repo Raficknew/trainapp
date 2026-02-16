@@ -1,8 +1,8 @@
-import { pgTable, text, uuid } from "drizzle-orm/pg-core";
-import { createdAt, id, updatedAt } from "../schemaHelpers";
-import { user } from "../schema";
-import { TrainingTable } from "./training";
 import { relations } from "drizzle-orm";
+import { pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { user } from "../schema";
+import { createdAt, id, updatedAt } from "../schemaHelpers";
+import { TrainingTable } from "./training";
 
 export const NotesTable = pgTable("notes", {
   id,
