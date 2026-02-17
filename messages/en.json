@@ -1,6 +1,25 @@
 {
   "SignInPage": {
-    "title": null,
-    "signInWithGoogle": null
+    "title": "Sign In",
+    "signInWithGoogle": "Sign in with Google"
+  },
+  "HomePage": {
+    "welcome": "Welcome to the Home Page"
+  },
+  "PushNotifications": {
+    "title": "Push Notifications",
+    "notSupported": "Push notifications are not supported in this browser.",
+    "subscribed": "You are subscribed to push notifications.",
+    "notSubscribed": "You are not subscribed to push notifications.",
+    "subscribe": "Subscribe",
+    "unsubscribe": "Unsubscribe",
+    "messagePlaceholder": "Enter notification message",
+    "sendTest": "Send Test"
+  },
+  "InstallApp": {
+    "title": "Install App",
+    "addToHomeScreen": "Add to Home Screen",
+    "iosInstructions": "To install this app on your iOS device, tap the share button",
+    "iosInstructionsPart2": "and then \"Add to Home Screen\""
   }
 }

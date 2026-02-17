@@ -1,3 +1,3 @@
-export default async function HomePage() {
-  return <div>HI Rafal</div>;
+export default function Page() {
+  return <div>es</div>;
 }
