@@ -1,7 +1,7 @@
+import { relations, sql } from "drizzle-orm";
 import { check, integer, numeric, pgTable, uuid } from "drizzle-orm/pg-core";
 import { createdAt, id, updatedAt } from "../schemaHelpers";
 import { ExerciseTable } from "./exercise";
-import { relations, sql } from "drizzle-orm";
 
 export const StrengthSetTable = pgTable(
   "strength_sets",
