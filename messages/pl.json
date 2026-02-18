@@ -2,5 +2,24 @@
   "SignInPage": {
     "title": "Zaloguj się",
     "signInWithGoogle": "Zaloguj się z Google"
+  },
+  "HomePage": {
+    "welcome": "Hej,"
+  },
+  "PushNotifications": {
+    "title": "Powiadomienia push",
+    "notSupported": "Powiadomienia push nie są obsługiwane w tej przeglądarce.",
+    "subscribed": "Subskrybujesz powiadomienia push.",
+    "notSubscribed": "Nie subskrybujesz powiadomień push.",
+    "subscribe": "Subskrybuj",
+    "unsubscribe": "Anuluj subskrypcję",
+    "messagePlaceholder": "Wpisz wiadomość powiadomienia",
+    "sendTest": "Wyślij test"
+  },
+  "InstallApp": {
+    "title": "Zainstaluj aplikację",
+    "addToHomeScreen": "Dodaj do ekranu głównego",
+    "iosInstructions": "Aby zainstalować tę aplikację na urządzeniu iOS, dotknij przycisku udostępniania",
+    "iosInstructionsPart2": "a następnie \"Dodaj do ekranu głównego\""
   }
 }

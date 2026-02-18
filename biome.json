@@ -43,6 +43,15 @@
       "formatter": {
         "enabled": false
       }
+    },
+    {
+      "includes": ["src/components/ui/**"],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      }
     }
   ]
 }
