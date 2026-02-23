@@ -1,12 +1,13 @@
 import {
-  Activity01Icon,
+  AnalyticsUpIcon,
   Calendar03Icon,
   DashboardSquare01Icon,
   PlusSignIcon,
   User02Icon,
 } from "@hugeicons/core-free-icons";
 import type { ReactNode } from "react";
-import { Sidebar } from "@/components/organisms/Sidebar";
+import { AvatarDropDown } from "@/components/molecules/AvatarDropDown";
+import { NavBar } from "@/components/organisms/NavBar";
 
 const routes = [
   {
@@ -16,7 +17,7 @@ const routes = [
   },
   { name: "Calendar", href: "/athlete/calendar", icon: Calendar03Icon },
   { name: "Create", href: "/training/create", icon: PlusSignIcon },
-  { name: "Progress", href: "/athlete/progress", icon: Activity01Icon },
+  { name: "Progress", href: "/athlete/progress", icon: AnalyticsUpIcon },
   { name: "Profile", href: "/athlete/profile", icon: User02Icon },
 ];
 
@@ -27,8 +28,11 @@ export default async function AthleteLayout({
 }) {
   return (
     <>
-      {children}
-      <Sidebar routes={routes} />
+      <div className="sm:hidden fixed right-0 top-0">
+        <AvatarDropDown />
+      </div>
+      <div className="sm:ml-28">{children}</div>
+      <NavBar routes={routes} />
     </>
   );
 }
