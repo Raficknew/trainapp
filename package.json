@@ -66,6 +66,9 @@
     "ignore": {
       "rules": [
         "react/no-danger"
+      ],
+      "files": [
+        "src/components/ui/**"
       ]
     }
   }
