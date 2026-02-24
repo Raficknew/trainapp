@@ -14,6 +14,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
+    "doctor": "npx -y react-doctor@latest .",
     "prepare": "husky"
   },
   "dependencies": {
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@swc/helpers": "^0.5.19",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
@@ -59,5 +61,12 @@
   },
   "lint-staged": {
     "*": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+  },
+  "reactDoctor": {
+    "ignore": {
+      "rules": [
+        "react/no-danger"
+      ]
+    }
   }
 }
