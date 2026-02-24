@@ -1,31 +1,61 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+interface State {
+  isIOS: boolean;
+  isStandalone: boolean;
+  installPrompt: BeforeInstallPromptEvent | null;
+}
+
+type Action =
+  | {
+      type: "SET_INITIAL_STATE";
+      payload: { isIOS: boolean; isStandalone: boolean };
+    }
+  | { type: "SET_INSTALL_PROMPT"; payload: BeforeInstallPromptEvent | null };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "SET_INITIAL_STATE":
+      return { ...state, ...action.payload };
+    case "SET_INSTALL_PROMPT":
+      return { ...state, installPrompt: action.payload };
+    default:
+      return state;
+  }
+}
+
 export function InitialInstallPrompt() {
   const t = useTranslations();
-  const [isIOS, setIsIOS] = useState(false);
-  const [isStandalone, setIsStandalone] = useState(false);
-  const [installPrompt, setInstallPrompt] =
-    useState<BeforeInstallPromptEvent | null>(null);
+  const [state, dispatch] = useReducer(reducer, {
+    isIOS: false,
+    isStandalone: false,
+    installPrompt: null,
+  });
 
   useEffect(() => {
-    setIsIOS(
+    const isIOS =
       /iPad|iPhone|iPod/.test(navigator.userAgent) &&
-        !(window as Window & { MSStream?: unknown }).MSStream,
-    );
+      !(window as Window & { MSStream?: unknown }).MSStream;
+    const isStandalone = window.matchMedia(
+      "(display-mode: standalone)",
+    ).matches;
 
-    setIsStandalone(window.matchMedia("(display-mode: standalone)").matches);
+    dispatch({ type: "SET_INITIAL_STATE", payload: { isIOS, isStandalone } });
 
     const handler = (e: Event) => {
       e.preventDefault();
-      setInstallPrompt(e as BeforeInstallPromptEvent);
+      dispatch({
+        type: "SET_INSTALL_PROMPT",
+        payload: e as BeforeInstallPromptEvent,
+      });
     };
 
     window.addEventListener("beforeinstallprompt", handler);
@@ -34,13 +64,13 @@ export function InitialInstallPrompt() {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!installPrompt) {
+    if (!state.installPrompt) {
       return;
     }
 
-    installPrompt.prompt();
+    state.installPrompt.prompt();
 
-    const { outcome } = await installPrompt.userChoice;
+    const { outcome } = await state.installPrompt.userChoice;
 
     if (outcome === "accepted") {
       console.log("User accepted the install prompt");
@@ -48,22 +78,22 @@ export function InitialInstallPrompt() {
       console.log("User dismissed the install prompt");
     }
 
-    setInstallPrompt(null);
+    dispatch({ type: "SET_INSTALL_PROMPT", payload: null });
   };
 
-  if (isStandalone || (!isIOS && !installPrompt)) {
+  if (state.isStandalone || (!state.isIOS && !state.installPrompt)) {
     return null;
   }
 
   return (
     <div>
       <h3>{t("InstallApp.title")}</h3>
-      {!isIOS && installPrompt && (
+      {!state.isIOS && state.installPrompt && (
         <button type="button" onClick={handleInstallClick}>
           {t("InstallApp.addToHomeScreen")}
         </button>
       )}
-      {isIOS && (
+      {state.isIOS && (
         <p>
           {t("InstallApp.iosInstructions")}
           <span role="img" aria-label="share icon">
