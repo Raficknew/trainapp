@@ -1,8 +1,16 @@
 {
   "Auth": {
-    "title": "Zaloguj się",
-    "signInWithGoogle": "Zaloguj się z Google",
-    "signOut": "Wyloguj się"
+    "signIn": {
+      "welcome": "Cześć!",
+      "description": "Zaloguj się do swojego konta TrainApp",
+      "withGoogle": "Zaloguj się z Google"
+    },
+    "signOut": {
+      "title": "Wyloguj się",
+      "alertDialogTitle": "Czy na pewno chcesz się wylogować?",
+      "cancel": "Anuluj",
+      "confirm": "Wyloguj się"
+    }
   },
   "HomePage": {
     "welcome": "Hej,"

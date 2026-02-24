@@ -1,8 +1,16 @@
 {
   "Auth": {
-    "title": "Sign In",
-    "signInWithGoogle": "Sign in with Google",
-    "signOut": "Sign Out"
+    "signIn": {
+      "welcome": "Hello!",
+      "description": "Log in to your TrainApp account",
+      "withGoogle": "Sign in with Google"
+    },
+    "signOut": {
+      "title": "Sign Out",
+      "alertDialogTitle": "Are you sure you want to sign out?",
+      "cancel": "Cancel",
+      "confirm": "Sign Out"
+    }
   },
   "HomePage": {
     "welcome": "Welcome to the Home Page"

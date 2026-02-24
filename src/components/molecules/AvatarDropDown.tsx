@@ -1,7 +1,4 @@
 "use client";
-
-import { Logout05Icon } from "@hugeicons/core-free-icons";
-import { HugeiconsIcon } from "@hugeicons/react";
 import { redirect } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -17,6 +14,7 @@ import {
 import { authClient } from "@/features/auth/client/auth-client";
 import { useCurrentRouteName } from "@/hooks/useCurrentRouteName";
 import { cn } from "@/lib/utils";
+import { SignOutButton } from "../atoms/SignOutButton";
 
 export function AvatarDropDown() {
   const { data } = authClient.useSession();
@@ -46,13 +44,7 @@ export function AvatarDropDown() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={() => redirect("/sign-out")}
-          className="focus:text-red-600 text-red-400"
-        >
-          <HugeiconsIcon icon={Logout05Icon} />
-          {t("Auth.signOut")}
-        </DropdownMenuItem>
+        <SignOutButton />
       </DropdownMenuContent>
     </DropdownMenu>
   );
