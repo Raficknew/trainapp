@@ -1,7 +1,8 @@
 {
-  "SignInPage": {
+  "Auth": {
     "title": "Sign In",
-    "signInWithGoogle": "Sign in with Google"
+    "signInWithGoogle": "Sign in with Google",
+    "signOut": "Sign Out"
   },
   "HomePage": {
     "welcome": "Welcome to the Home Page"
@@ -21,5 +22,12 @@
     "addToHomeScreen": "Add to Home Screen",
     "iosInstructions": "To install this app on your iOS device, tap the share button",
     "iosInstructionsPart2": "and then \"Add to Home Screen\""
+  },
+  "Routes": {
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "create": "Training",
+    "progress": "Progress",
+    "profile": "Profile"
   }
 }

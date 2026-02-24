@@ -1,6 +1,9 @@
 "use client";
 
+import { Logout05Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { redirect } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,11 +15,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { authClient } from "@/features/auth/client/auth-client";
+import { useCurrentRouteName } from "@/hooks/useCurrentRouteName";
+import { cn } from "@/lib/utils";
 
 export function AvatarDropDown() {
   const { data } = authClient.useSession();
-
-  const isCoach = true;
+  const t = useTranslations();
+  const currentRoute = useCurrentRouteName();
 
   return (
     <DropdownMenu>
@@ -33,15 +38,20 @@ export function AvatarDropDown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
-          {isCoach && <DropdownMenuItem>Coach dashboard</DropdownMenuItem>}
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem
+            className={cn(currentRoute === "profile" && "pointer-events-none")}
+            onClick={() => redirect("/athlete/profile")}
+          >
+            {t("Routes.profile")}
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => redirect("/sign-out")}
           className="focus:text-red-600 text-red-400"
         >
-          Sign Out
+          <HugeiconsIcon icon={Logout05Icon} />
+          {t("Auth.signOut")}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

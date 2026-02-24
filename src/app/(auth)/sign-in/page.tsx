@@ -13,9 +13,9 @@ export default function SignInPage() {
 
   return (
     <div>
-      <h1>{t("SignInPage.title")}</h1>
+      <h1>{t("Auth.title")}</h1>
       <button type="submit" onClick={signInWithGoogle}>
-        {t("SignInPage.signInWithGoogle")}
+        {t("Auth.signInWithGoogle")}
       </button>
     </div>
   );
