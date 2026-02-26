@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useReducer } from "react";
+import { Button } from "@/components/ui/button";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -89,9 +90,9 @@ export function InitialInstallPrompt() {
     <div>
       <h3>{t("InstallApp.title")}</h3>
       {!state.isIOS && state.installPrompt && (
-        <button type="button" onClick={handleInstallClick}>
+        <Button type="button" variant="default" onClick={handleInstallClick}>
           {t("InstallApp.addToHomeScreen")}
-        </button>
+        </Button>
       )}
       {state.isIOS && (
         <p>

@@ -8,26 +8,43 @@ permissions:
   issues: write
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+      
+      - name: Run Biome
+        run: biome ci .
 
+  test:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       
       - name: Install dependencies
         run: npm ci
       
-      - name: Run Biome 
-        run: npm run lint
-      
       - name: Run Tests
         run: npm test
+
+  doctor:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       
       - name: Run React Doctor
         uses: millionco/react-doctor@main

@@ -13,6 +13,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { authClient } from "@/features/auth/client/auth-client";
 
 export function SignOutButton() {
   const t = useTranslations();
@@ -20,7 +21,7 @@ export function SignOutButton() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="ghostDestructive">
+        <Button variant="destructive" size="sm" className="w-full">
           <HugeiconsIcon icon={Logout05Icon} />
           {t("Auth.signOut.title")}
         </Button>
@@ -33,7 +34,17 @@ export function SignOutButton() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>{t("Auth.signOut.cancel")}</AlertDialogCancel>
-          <AlertDialogAction onClick={() => redirect("/sign-out")}>
+          <AlertDialogAction
+            onClick={async () =>
+              await authClient.signOut({
+                fetchOptions: {
+                  onSuccess: () => {
+                    redirect("/sign-in");
+                  },
+                },
+              })
+            }
+          >
             {t("Auth.signOut.confirm")}
           </AlertDialogAction>
         </AlertDialogFooter>
