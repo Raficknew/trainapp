@@ -1,3 +1,5 @@
-export default function Page() {
-  return <div>es</div>;
+import { redirect } from "next/navigation";
+
+export default function HomePage() {
+  redirect("/athlete/dashboard");
 }

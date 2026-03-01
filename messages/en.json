@@ -1,7 +1,16 @@
 {
-  "SignInPage": {
-    "title": "Sign In",
-    "signInWithGoogle": "Sign in with Google"
+  "Auth": {
+    "signIn": {
+      "welcome": "Hello!",
+      "description": "Log in to your TrainApp account",
+      "withGoogle": "Sign in with Google"
+    },
+    "signOut": {
+      "title": "Sign Out",
+      "alertDialogTitle": "Are you sure you want to sign out?",
+      "cancel": "Cancel",
+      "confirm": "Sign Out"
+    }
   },
   "HomePage": {
     "welcome": "Welcome to the Home Page"
@@ -21,5 +30,12 @@
     "addToHomeScreen": "Add to Home Screen",
     "iosInstructions": "To install this app on your iOS device, tap the share button",
     "iosInstructionsPart2": "and then \"Add to Home Screen\""
+  },
+  "Routes": {
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "create": "Training",
+    "progress": "Progress",
+    "profile": "Profile"
   }
 }

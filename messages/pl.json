@@ -1,7 +1,16 @@
 {
-  "SignInPage": {
-    "title": "Zaloguj się",
-    "signInWithGoogle": "Zaloguj się z Google"
+  "Auth": {
+    "signIn": {
+      "welcome": "Cześć!",
+      "description": "Zaloguj się do swojego konta TrainApp",
+      "withGoogle": "Zaloguj się z Google"
+    },
+    "signOut": {
+      "title": "Wyloguj się",
+      "alertDialogTitle": "Czy na pewno chcesz się wylogować?",
+      "cancel": "Anuluj",
+      "confirm": "Wyloguj się"
+    }
   },
   "HomePage": {
     "welcome": "Hej,"
@@ -21,5 +30,12 @@
     "addToHomeScreen": "Dodaj do ekranu głównego",
     "iosInstructions": "Aby zainstalować tę aplikację na urządzeniu iOS, dotknij przycisku udostępniania",
     "iosInstructionsPart2": "a następnie \"Dodaj do ekranu głównego\""
+  },
+  "Routes": {
+    "dashboard": "Dashboard",
+    "calendar": "Kalendarz",
+    "create": "Trening",
+    "progress": "Progres",
+    "profile": "Profil"
   }
 }
