@@ -32,7 +32,7 @@ export default async function AthleteLayout({
     },
     {
       name: t("Routes.create"),
-      href: "/training/create",
+      href: "/create",
       icon: PlusSignIcon,
       key: "create",
     },

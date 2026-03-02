@@ -101,14 +101,10 @@ CREATE TABLE "training" (
 	"completed_at" timestamp with time zone,
 	"status" "training_status" DEFAULT 'scheduled' NOT NULL,
 	"duration_time_in_minutes" integer NOT NULL,
-	"rpe" integer NOT NULL,
-	"feeling" integer NOT NULL,
 	"owner_id" text NOT NULL,
 	"training_plan_id" uuid NOT NULL,
 	"updatedAt" timestamp with time zone DEFAULT now() NOT NULL,
-	"createdAt" timestamp with time zone DEFAULT now() NOT NULL,
-	CONSTRAINT "rpe_range" CHECK ("training"."rpe" >= 1 AND "training"."rpe" <= 10),
-	CONSTRAINT "feeling_range" CHECK ("training"."feeling" >= 1 AND "training"."feeling" <= 10)
+	"createdAt" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "training_plan" (

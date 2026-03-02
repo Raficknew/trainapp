@@ -1,5 +1,5 @@
 {
-  "id": "41c140f1-f0b4-46c7-81f1-20d5b3ec867b",
+  "id": "8b9f4b5a-56b6-4d3e-84e2-ef84d82c6f8b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -735,18 +735,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "rpe": {
-          "name": "rpe",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "feeling": {
-          "name": "feeling",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
         "owner_id": {
           "name": "owner_id",
           "type": "text",
@@ -819,16 +807,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "checkConstraints": {
-        "rpe_range": {
-          "name": "rpe_range",
-          "value": "\"training\".\"rpe\" >= 1 AND \"training\".\"rpe\" <= 10"
-        },
-        "feeling_range": {
-          "name": "feeling_range",
-          "value": "\"training\".\"feeling\" >= 1 AND \"training\".\"feeling\" <= 10"
-        }
-      },
+      "checkConstraints": {},
       "isRLSEnabled": false
     },
     "public.training_plan": {

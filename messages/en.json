@@ -34,7 +34,7 @@
   "Routes": {
     "dashboard": "Dashboard",
     "calendar": "Calendar",
-    "create": "Training",
+    "create": "Create",
     "progress": "Progress",
     "profile": "Profile"
   }
