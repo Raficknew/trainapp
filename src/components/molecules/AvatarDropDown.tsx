@@ -24,17 +24,19 @@ export function AvatarDropDown() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <Avatar>
-            <AvatarImage
-              src={data?.user.image ?? undefined}
-              alt="user-picture"
-            />
-            <AvatarFallback>{data?.user.name.charAt(0)}</AvatarFallback>
-          </Avatar>
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        render={
+          <Button variant="ghost" size="icon" className="rounded-full">
+            <Avatar>
+              <AvatarImage
+                src={data?.user.image ?? undefined}
+                alt="user-picture"
+              />
+              <AvatarFallback>{data?.user.name.charAt(0)}</AvatarFallback>
+            </Avatar>
+          </Button>
+        }
+      ></DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           <Link

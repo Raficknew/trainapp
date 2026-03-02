@@ -5,7 +5,7 @@
   "packageManager": "pnpm@10.30.3",
   "scripts": {
     "dev": "next dev",
-    "dev:mobile": "next dev --experimental-https",
+    "proxy": "adb reverse tcp:3000 tcp:3000",
     "build": "next build",
     "start": "next start",
     "test": "vitest",
@@ -15,7 +15,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "doctor": "npx -y react-doctor@latest .",
+    "doctor": "pnpm dlx react-doctor@latest --no-dead-code --no-ami",
     "prepare": "husky"
   },
   "dependencies": {
@@ -30,7 +30,6 @@
     "next": "16.1.6",
     "next-intl": "^4.8.3",
     "pg": "^8.18.0",
-    "radix-ui": "^1.4.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "shadcn": "^3.8.5",

@@ -21,12 +21,14 @@ export function SignOutButton() {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="destructive" size="sm" className="w-full">
-          <HugeiconsIcon icon={Logout05Icon} />
-          {t("Auth.signOut.title")}
-        </Button>
-      </AlertDialogTrigger>
+      <AlertDialogTrigger
+        render={
+          <Button variant="destructive" size="sm" className="w-full">
+            <HugeiconsIcon icon={Logout05Icon} />
+            {t("Auth.signOut.title")}
+          </Button>
+        }
+      ></AlertDialogTrigger>
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogTitle>

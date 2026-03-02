@@ -20,7 +20,7 @@ export default function SignInPage() {
         <h1 className="text-4xl">{t("Auth.signIn.welcome")}</h1>
         <h2>{t("Auth.signIn.description")}</h2>
       </div>
-      <Button className="px-20 py-5" onClick={signInWithGoogle}>
+      <Button className="px-20 py-4" onClick={signInWithGoogle}>
         <HugeiconsIcon icon={GoogleIcon} />
         {t("Auth.signIn.withGoogle")}
       </Button>
