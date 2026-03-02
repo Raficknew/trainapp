@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TrainApp
 
-## Getting Started
+## 1) Prerequisites
 
-First, run the development server:
+- Node.js 20+
+- pnpm 10+
+- Docker Desktop (or Docker Engine + Compose)
+
+## 2) Clone and install
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo-url>
+cd trainapp
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 3) Create environment file
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy the template:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cp .env.template .env
+```
 
-## Learn More
+Update these required values in `.env`:
 
-To learn more about Next.js, take a look at the following resources:
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### How to get/generate required values
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Google OAuth credentials
 
-## Deploy on Vercel
+1. Open https://console.cloud.google.com/
+2. Go to **APIs & Services** → **Credentials**
+3. Create an **OAuth client ID** (Web application)
+4. Add this redirect URI:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+http://localhost:3000/api/auth/callback/google
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Copy values into `.env`:
+	- `GOOGLE_CLIENT_ID`
+	- `GOOGLE_CLIENT_SECRET`
+
+### Optional: PWA / Push Notifications (recommended for full feature demo)
+
+If you want to test push notifications locally, set:
+
+- `NEXT_PUBLIC_VAPID_PUBLIC_KEY`
+- `VAPID_PRIVATE_KEY`
+
+Generate VAPID keys with:
+
+```bash
+pnpm dlx web-push generate-vapid-keys
+```
+
+Then paste:
+
+- **Public Key** → `NEXT_PUBLIC_VAPID_PUBLIC_KEY`
+- **Private Key** → `VAPID_PRIVATE_KEY`
+
+Everything else in `.env.template` is already prefilled for local development.
+
+## 4) Start PostgreSQL
+
+```bash
+docker-compose up -d
+```
+
+## 5) Run migrations
+
+```bash
+pnpm db:generate
+pnpm db:migrate
+```
+
+## 6) Start the app
+
+```bash
+pnpm dev
+```
+
+Open: http://localhost:3000
+
+## Useful commands
+
+```bash
+pnpm test       # run tests
+pnpm lint       # lint check
+pnpm lint:fix   # auto-fix lint issues
+pnpm build      # production build check
+pnpm db:studio  # open Drizzle Studio
+```
